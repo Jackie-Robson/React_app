@@ -1,24 +1,38 @@
 "use strict"
 import React from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {getBooks} from '../../actions/booksActions';
+import  BookItem from './bookitem';
+import BooksForm from './bookForm'
+import {Grid,Col,Row,Button} from 'react-bootstrap';
 
 class BooksList extends React.Component{
+	componentDidMount(){
+		this.props.getBooks;
+	}
 	render(){
 		const booksList = this.props.books.map(function(booksArr){
 			return(
-				<div key={booksArr.id}>
-					<h2>{booksArr.title}</h2>
-					<h3>{booksArr.description}</h3>
-					<h2>£{booksArr.price}</h2>
-					<hr />
-				</div>
-
+				<Col xs={12} sm={9} md={6} key={booksArr.id}>
+					<BookItem
+						id={booksArr.id}
+						title={booksArr.title}
+						description={booksArr.description}
+						price={booksArr.price}/>
+				</Col>
 			)
 		})
 		return(
-			<div>
-				{booksList}
-			</div>
+			<Grid>
+				<Row>
+				<Col xs={12} sm={9} md={6}>
+					<BooksForm />
+				</Col>
+					{booksList}
+
+				</Row>
+			</Grid>
 		)
 	}
 }
@@ -27,5 +41,10 @@ function mapStateToProps(state){
 		books:state.books.books
 	}
 }
+function mapDispatchToProps(dispatch){
+	return bindActionCreators({
+		getBooks:getBooks
+	},dispatch)
+}
 
-export default connect(mapStateToProps)(BooksList);
+export default connect(mapStateToProps,mapDispatchToProps)(BooksList);

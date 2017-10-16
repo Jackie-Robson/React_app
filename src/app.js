@@ -36,31 +36,8 @@ render(
 
 // book actions
 
-store.dispatch(postBooks([{
-		id:1,
-		title: "Graphic design rules",
-		description: "365 essential designs do's and don'ts.",
-		price: 14.99
-	},
-	{
-		id:2,
-		title:"Hitchhikers guide to the galaxy",
-		description:"Follow Dent, Arthur dent as he journies accross the galaxy with his towel.",
-		price: 8.99
-	},
-	{
-		id:3,
-		title:"Learn react",
-		description:"This book does not exist but i'm learning through a video series.",
-		price:0.01
-	},{
-		id:4,
-		title:"another book",
-		description:"another description",
-		price:0.002
-	}
-])
-)
+// store.dispatch(postBooks()
+//)
 
 
 // store.dispatch(deleteBook(

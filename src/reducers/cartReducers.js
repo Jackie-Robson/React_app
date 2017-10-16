@@ -3,10 +3,10 @@
 export function cartReducers(state={cart:[]}, action) {
 	switch(action.type) {
 
-// add a book to the cart 
+// add a book to the cart
 
 		case "ADD_TO_CART":
-		return {cart:[...state.cart, ...action.payload]};
+		return {cart:[...state,...action.payload]};
 			break;
 	}
 	return state
